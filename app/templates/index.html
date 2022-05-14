@@ -1,9 +1,13 @@
 {% extends 'base.html'%}
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='CSS/index.css')}}">
+{% endblock %}
 <!-- Content block -->
 {% block content %}
 
 <div class="container-fluid m-5">
-  <h3>Personal blog</h3>
+  <h3 id="blog">Personal blog</h3>
 </div>
 
 {% endblock%}
