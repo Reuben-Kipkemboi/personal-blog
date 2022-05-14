@@ -14,10 +14,13 @@
           </li>
           
         </ul>
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-                <a href=""><button type="button" class="btn btn-info" id="login">Login as a Writer</button></a>
-            </li>
+        <ul class="nav navbar-nav navbar-right ms-auto">
+          {% if current_user.is_authenticated %}
+          <li style="color:white;padding:15px;">{{current_user.username}}</li>
+          <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+          {% else %}
+          <li><a href="{{url_for('auth.login')}}"><button type="button" class="btn btn-info" id="login">Login as a Writer</button></a></li>
+          {%endif%}
         </ul>
       </div>
     </div>

@@ -1,8 +1,11 @@
 import datetime
 from . import db
-   #securing passwords
+#securing passwords
 from werkzeug.security import generate_password_hash,check_password_hash
-class User(db.Model):  
+from flask_login import UserMixin
+from . import login_manager
+
+class User(UserMixin, db.Model):  
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(255))
@@ -10,7 +13,7 @@ class User(db.Model):
     password_secure = db.Column(db.String(255))
     description = db.Column(db.String(255))
     avatar = db.Column(db.String())
-    blogs = db.relationship('Blogs', backref='author', lazy = 'dynamic')
+    # blogs = db.relationship('Blogs', backref='author', lazy = 'dynamic')
      # save user
     def save_user(self):
         db.session.add(self)
@@ -26,10 +29,12 @@ class User(db.Model):
     # check password
     def verify_password(self, password):
         return check_password_hash(self.password_secure, password)
+    
     # login manager
-    # @login_manager.user_loader
-    # def load_user(user_id):
-    #     return User.query.get(int(user_id))
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User.query.get(int(user_id))
+    
     def __repr__(self):
         return f'User {self.username}'
 
