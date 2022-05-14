@@ -6,3 +6,13 @@ class User():
         self.email = email
         self.password = password
         self.registered_on = datetime.datetime.now()
+        
+class Quotes():
+    '''
+    Defining Quote objects
+    '''
+    def __init__(self, quote, author, permalink):
+        self.quote = quote
+        self.author  = author
+        self.permalink = permalink
+        
