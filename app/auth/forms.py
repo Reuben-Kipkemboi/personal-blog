@@ -15,8 +15,8 @@ class RegistrationForm(FlaskForm):
     
     #validating our email
     def validate_email(self,data_field):
-            if User.query.filter_by(email =data_field.data).first():
-                raise ValidationError('An account with that email exists')
+        if User.query.filter_by(email = data_field.data).first():
+            raise ValidationError('An account with that email exists')
 
     #validating our username
     def validate_username(self,data_field):
