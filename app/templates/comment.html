@@ -16,7 +16,7 @@
                 <small><strong>{{ comment.date_commented.strftime("%m/%d/%Y")}}</strong></small>
 
                 <a class = " text-danger fs-4 d-flex justify-content-end" href="{{ url_for('main.delete_user_comment', comment_id = comment.id)}}"><i
-                        class="far fa-trash-alt"></i></a>
+class="far fa-trash-alt"></i></a>
             </div>
             {% endfor %}
         </div>

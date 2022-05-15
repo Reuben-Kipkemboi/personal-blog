@@ -1,16 +1,57 @@
-{% extends 'base.html'%}
-{% block styles%}
-{{ super() }}
-<link rel="stylesheet" href="{{url_for('static',filename='CSS/index.css')}}">
-{% endblock %}
+{% extends 'base.html' %}
+
 <!-- Content block -->
 {% block content %}
 
-<div class="container-fluid mt-2">
+<div class="container-fluid mt-2 bg-light">
   <h3 id="blog">Personal blog</h3>
   <div class="row">
-    <div class="col-md-6"></div>
     <div class="col-md-4">
+      <form action="">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <div class="tab-content mt-3">
+        <div class="tab-pane fade show active" id="relevant" role="tabpanel" aria-labelledby="relevant-tab">
+          {% for blog in blogs %}
+          <div class="card m-3 shadow p-2">
+            <div class="card-body">
+              <div class="d-flex flex-row user-info">
+                <i class="fa-solid fa-user-large fs-5"></i>
+                <div class="d-flex flex-column justify-content-start ml-2">
+                  <span class="d-block fw-bold">{{ blog.author}}</span>
+                  <span class="date text-black-50" style="font-size: 15px;"><i class="fas fa-calendar-alt"></i>
+                    {{blog.date_created.strftime('%d/%m/%Y, %I:%M %p') }}</span>
+                </div>
+              </div>
+              <a href="{{url_for('main.blog',blog_id = blog.id)}}">
+                <h5 class="card-title"><b>{{ blog.blog_title }}</b></h5>
+              </a>
+              <p class="card-text text-muted">{{ blog.blog_content[:250]|safe + " ....." }}</p>
+              
+              <a class="float-left" style="margin-right: 5px;" href="">
+                <button class="btn btn-outline-warning btn-sm"><i class="far fa-edit"></i> Edit</button>
+              </a>
+              <a href="#">
+                <button class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target=""><i
+                    class="far fa-trash-alt"></i> Delete</button>
+              </a>
+              <a class="float-right" href="{{url_for('main.make_comment',blog_id = blog.id)}}">
+                <button class="btn btn-outline-primary btn-sm"><i class="far fa-comment-alt"></i> Comment</button>
+              </a>
+            </div>
+          </div>
+
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
       <div class="card shadow text-center">
         <p class="card-title border-bottom">Computing Quotes</p>
         <div class="card-body">
@@ -21,8 +62,6 @@
           <a href="{{quote.permalink}}"><button type="button" class="btn btn-outline-dark btn-sm">Quote
               Details</button></a>
           </blockquote>
-
-
         </div>
       </div>
     </div>

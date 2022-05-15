@@ -12,9 +12,10 @@ from ..models import User,Blog,Comment
 
 @main.route('/')
 def index():
+    blogs = Blog.query.order_by(Blog.date_created).all()
     quote= get_quote()
 
-    return render_template('index.html', quote=quote)
+    return render_template('index.html', quote=quote, blogs=blogs   )
 
 @main.route('/newblog', methods=['GET', 'POST'])
 def new_blog():
@@ -22,11 +23,16 @@ def new_blog():
     if form.validate_on_submit():
         blog_title = form.title.data
         blog_content = form.content.data
-        new_blog= Blog(title=blog_title, content=blog_content,user_id=current_user.id)
-        new_blog.save_blog()
+        new_user_blog= Blog(blog_title=blog_title, blog_content=blog_content,user_id=current_user.id)
+        
+        
+        new_user_blog.save_blog()
+        
         flash('Blog created successfully','Success')
+        
         return redirect(url_for('main.index'))
-    return render_template('blog.html',blog_form = form)
+    
+    return render_template('blog.html',form = form)
 
 #Displaying our blogs
 @main.route('/blog/<blog_id>', methods=['GET', 'POST'])
@@ -56,10 +62,32 @@ def make_comment(blog_id):
 
 #Deleting insulting or degrading comments.
 @main.route('/comment/<comment_id>', methods=['POST','GET'])
+@login_required
 def delete_user_comment(comment_id):
     comment = Comment.query.filter_by(id = comment_id).first()
     blog_id = comment.blog_id
     db.session.delete(comment)
     db.session.commit()
     flash('successfully Deleted comment','success')
-    return redirect(url_for('.blog',blog_id = blog_id))
+    return redirect(url_for('blog.html',blog_id = blog_id))
+
+#Updating a blog
+@main.route('/blog/<blog_id>/updating',methods=['GET', 'POST'])
+# @login_required
+def update_blog(blog_id):
+    user_blog=Blog.query.filter_by(id=blog_id).first()
+    #Checks the user by using the id
+    if user_blog.author.id !=current_user.id:
+        abort(403)
+
+    form=BlogForm()
+    if form.validate_on_submit():
+        user_blog.blog_title=form.title.data
+        user_blog.blog_content=form.content.data
+        db.session.commit()
+        flash('You have updated a blog','Success')
+        return redirect(url_for('.blog',blog_id=blog.id) )
+    elif request.method=='GET':
+        form.title.data=user_blog.blog_title
+        form.content.data=user_blog.blog_content    
+    return render_template('blog.html', form = form,title='Update blog update')

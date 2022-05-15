@@ -15,6 +15,11 @@
                     <p>{{ blog.blog_content }}</p>
                     {{blog.date_created.strftime("%m/%d/%Y")}} 
 
+                    <a href="{{url_for('main.make_comment',blog_id = blog.id)}}"><i class="fa fa-comments"
+                        aria-hidden="true"></i>comment</a>
+                        <a href=""><i class="fas fa-edit"></i></i>Edit</a>
+                          <a href=""><i class="far fa-trash-alt"></i>Delete Blog</a>
+
                 </div>
             </div>
         </div>
