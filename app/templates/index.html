@@ -21,8 +21,8 @@
                     {{blog.date_created.strftime('%d/%m/%Y, %I:%M %p') }}</span>
                 </div>
               </div>
-              <a href="{{url_for('main.blog',blog_id = blog.id)}}">
-                <h5 class="card-title"><b>{{ blog.blog_title }}</b></h5>
+              <a href="{{url_for('main.blog',blog_id = blog.id)}}" id="link">
+                <h5 class="card-title"><b id="bold">{{ blog.blog_title }}</b></h5>
               </a>
               <p class="card-text text-muted">{{ blog.blog_content[:250]|safe + " ....." }}</p>
               

@@ -1,14 +1,42 @@
-*{
-    font-family: 'Arvo', serif;
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri&display=swap');
 
-    background-color: red;
+*{
+    font-family: 'El Messiri', sans-serif;
 }
 #home{
-    color: red;
+    color: #16182D;
 }
 #blog{
     color: blue;
 }
+#nav{
+    background-color: #16182D;
+}
 #login{
-    margin-right: 3%;
+    background-color: #A87741;
+    padding: 10px 30px 10px 30px;
+}
+#login:hover{
+    background-color: #A69D8D;
+}
+/* Index html styling */
+#bold{
+    color: #16182D;
+   
+}
+#link{
+    text-decoration: none;
+}
+#link:hover{
+    text-decoration: underline;
+}
+#blog{
+    text-align: center;
+    border-bottom: 2px solid #16182D;
+}
+
+/* comment.html */
+#container{
+    height: 100vh;
+    background-color: #E9E8DF;
 }

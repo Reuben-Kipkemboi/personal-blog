@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav">
     <div class="container-fluid">
       <a class="navbar-brand" id ="home" href="/">BlogSpot</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,7 +16,7 @@
           <a href="/newblog" class="tag"><button type="button" class="btn btn-outline-dark ms-1">Make a Blog</button></a>
           <a href="{{url_for('auth.logout')}}"><button type="button" class="btn btn-outline-dark ms-1">Logout</button></a></li>
           {% else %}
-          <li><a href="{{url_for('auth.login')}}"><button type="button" class="btn btn-info" id="login">Login as a Writer</button></a></li>
+          <li><a href="{{url_for('auth.login')}}"><button type="button" class="btn" id="login">Login</button></a></li>
           {%endif%}
         </ul>
       </div>
