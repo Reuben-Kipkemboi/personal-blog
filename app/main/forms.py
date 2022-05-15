@@ -12,6 +12,6 @@ class BlogForm(FlaskForm):
     submit = SubmitField('Post')
 
 class CommentForm(FlaskForm):
-    content = TextAreaField('Give Feedback, Complaints/Comments', validators=[DataRequired()])
+    content = TextAreaField('Leave your comments on our blogs', validators=[DataRequired()])
 
     submit = SubmitField('COMMENT')
