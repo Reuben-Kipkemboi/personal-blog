@@ -74,11 +74,11 @@ class Blog(db.Model):
     comments = db.relationship('Comment', backref='blog', lazy = 'dynamic')
     
     #saving our blogs
-    def save_blogs(self):
+    def save_blog(self):
         db.session.add(self)
         db.session.commit()
     def repr(self):
-        return f'Blog {self.title}'
+        return f'Blog {self.blog_title}'
 #Comments class
 
 class Comment(db.Model):
