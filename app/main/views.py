@@ -12,7 +12,7 @@ from ..models import User,Blog,Comment
 
 @main.route('/')
 def index():
-    blogs = Blog.query.order_by(Blog.date_created).all()
+    blogs = Blog.query.order_by(Blog.date_created.desc()).all()
     quote= get_quote()
 
     return render_template('index.html', quote=quote, blogs=blogs   )

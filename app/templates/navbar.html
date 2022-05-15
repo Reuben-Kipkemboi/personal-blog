@@ -12,7 +12,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right ms-auto">
           {% if current_user.is_authenticated %}
-          <li style="color:blue;padding:15px;">{{current_user.username}}</li>
+          <button type="button " class="btn btn-outline-dark">{{current_user.username}}</button>
           <li><a href="/newblog" class="tag">Make Blog</a>&nbsp;</li>
           <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
           {% else %}
