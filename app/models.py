@@ -69,7 +69,7 @@ class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     blog_title = db.Column(db.String(255))
     blog_content = db.Column(db.String())
-    date_posted=db.Column(db.DateTime, default=datetime.utcnow)
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     comments = db.relationship('Comment', backref='blog', lazy = 'dynamic')
     
@@ -83,9 +83,10 @@ class Blog(db.Model):
 
 class Comment(db.Model):
     __tablename__='comments'
+    
     id = db.Column(db.Integer, primary_key=True)
     comment_content = db.Column(db.String(255))
-    date_commented=db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
+    date_commented = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     blog_id = db.Column(db.Integer, db.ForeignKey('blogs.id'))
 

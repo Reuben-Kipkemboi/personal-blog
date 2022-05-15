@@ -12,17 +12,8 @@
                     </h4>
                 </div>
                 <div class="panel-body">
-                    <p>{{ blog.content }}</p>
-                    <p class="panel-text"><strong>Date of upload: <span class="badge rounded-pill bg-warning text-dark">{{
-                      blog.date_posted.strftime("%m/%d/%Y")}}</span></strong> <br>
-                        <a href="{{ url_for('main.comments', blog_id = blog.id)}}"><i class="fa fa-comments"
-                                aria-hidden="true"></i>comment</a>
-                        <a href="{{ url_for('main.update_blog', blog_id = blog.id)}}"><i
-                                class="fas fa-edit"></i></i>Edit</a>
-                        <a href="{{ url_for('main.delete_blog', blog_id = blog.id)}}"><i
-                                class="far fa-trash-alt"></i>Delete Blog</a>
-
-                    </p>
+                    <p>{{ blog.blog_content }}</p>
+                    {{blog.date_created.strftime("%m/%d/%Y")}} 
 
                 </div>
             </div>
