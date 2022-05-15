@@ -18,6 +18,7 @@ def index():
     return render_template('index.html', quote=quote, blogs=blogs   )
 
 @main.route('/newblog', methods=['GET', 'POST'])
+@login_required
 def new_blog():
     form = BlogForm()
     if form.validate_on_submit():
@@ -73,7 +74,7 @@ def delete_user_comment(comment_id):
 
 #Updating a blog
 @main.route('/blog/<blog_id>/updating',methods=['GET', 'POST'])
-# @login_required
+@login_required
 def update_blog(blog_id):
     user_blog=Blog.query.filter_by(id=blog_id).first()
     #Checks the user by using the id

@@ -2,7 +2,7 @@
 {% import 'bootstrap/wtf.html' as wtf%}
 
 {% block content %}
-<div class="container-fluid mt-5" style="background-color: #8C6860; height: 500px;">
+<div class="container-fluid pt-5" style="background-color: #C4A3D1; height: 500px;">
     <div class="row">
         <!-- <div class="col-md-2"></div> -->
         <div class="col-md-6" id="comment">
@@ -14,7 +14,6 @@
             <div class="card w-20 mb-2 p-2 shadow" id="user-comment">
                 <p class="fst-italic">{{ comment.comment_content}}</p>
                 <small><strong>{{ comment.date_commented.strftime("%m/%d/%Y")}}</strong></small>
-
                 <a class = " text-danger fs-4 d-flex justify-content-end" href="{{ url_for('main.delete_user_comment', comment_id = comment.id)}}"><i
 class="far fa-trash-alt"></i></a>
             </div>

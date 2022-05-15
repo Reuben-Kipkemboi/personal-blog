@@ -2,14 +2,19 @@
 {% import 'bootstrap/wtf.html' as wtf%}
 <!-- content goes in here -->
 {% block content %}
-<div class="container-fluid">
+<div class="container-fluid mt-5 bg-light">
     <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6 ">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6" style="background-color: #8D88B3;">
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+            </div>
+            {% endfor %}
             {{wtf.quick_form(form)}}
         </div>
-        <div class="col-md-3"></div>
     </div>
 </div>
 {% endblock %}
-
