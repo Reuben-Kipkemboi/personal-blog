@@ -7,17 +7,18 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Blogs</a>
+            <a class="nav-link" href="">Blogs</a>
           </li>
           
         </ul>
         <ul class="nav navbar-nav navbar-right ms-auto">
           {% if current_user.is_authenticated %}
           <li style="color:white;padding:15px;">{{current_user.username}}</li>
-          <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+          <li><a href="/newblog" class="tag">Make Blog</a>&nbsp;</li>
+          <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
           {% else %}
           <li><a href="{{url_for('auth.login')}}"><button type="button" class="btn btn-info" id="login">Login as a Writer</button></a></li>
           {%endif%}
