@@ -31,6 +31,15 @@ A personal blogging website where you can create and share your opinions and oth
 
 [Go Back to the top](#personal-blog)
 
+Writers view
+
+![Home page from a writers Account](./app/static/images/writer.png)
+
+Users View
+
+![Home page from a writers Account](./app/static/images/user.png)
+
+
 ## Behaviour Driven Development
 | Behaviour | Input | Output |
 | :---------------- | :---------------: | ------------------: |
