@@ -109,7 +109,7 @@ chmod a+x start.sh
 * [Design](https://www.figma.com/file/r2H9WSgZZYkB7NsFxioBpT/blog?node-id=2%3A2)
 
 ## Live Site
-* #### 
+* #### https://techy-blog22.herokuapp.com
 
 ## Authors Info
 * Slack - [Reuben Kipkemboi]()
