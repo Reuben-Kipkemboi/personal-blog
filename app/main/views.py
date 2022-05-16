@@ -92,3 +92,14 @@ def update_blog(blog_id):
         form.title.data=user_blog.blog_title
         form.content.data=user_blog.blog_content    
     return render_template('blog.html', form = form,title='Update blog update')
+
+
+#Deleting a blog
+@main.route('/blog/<blog_id>/deleting',methods=['GET', 'POST'])
+@login_required
+def delete_user_blog(blog_id):
+    user_blog=Blog.query.filter_by(id=blog_id).first()
+    
+    db.session.delete(user_blog)
+    db.session.commit()
+    return redirect(url_for('main.index'))

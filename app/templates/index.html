@@ -26,10 +26,10 @@
               </a>
               <p class="card-text text-muted">{{ blog.blog_content[:250]|safe + " ....." }}</p>
               
-              <a class="float-left" style="margin-right: 5px;" href="">
+              <a class="float-left" style="margin-right: 5px;" href="{{ url_for('main.update_blog', blog_id = blog.id)}}">
                 <button class="btn btn-outline-warning btn-sm"><i class="far fa-edit"></i> Edit</button>
               </a>
-              <a href="#">
+              <a href="{{ url_for('main.delete_user_blog', blog_id = blog.id)}}">
                 <button class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target=""><i
                     class="far fa-trash-alt"></i> Delete</button>
               </a>
