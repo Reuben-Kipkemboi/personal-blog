@@ -87,7 +87,8 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     comment_content = db.Column(db.String(255))
     date_commented = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    # username= db.Column(db.String(255))
+    # user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     blog_id = db.Column(db.Integer, db.ForeignKey('blogs.id'))
 
     
@@ -97,3 +98,14 @@ class Comment(db.Model):
 
     def __repr__(self):
         return f'Comment {self.name}'
+    
+#subscribers model
+class Subscriber(db.Model):
+    __table__ ='subscribers'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(255), unique=True, index=True)
+    
+    def save_subscribers(self):
+        db.session.add(self)
+        db.session.commit()
