@@ -40,3 +40,10 @@
     height: 100vh;
     background-color: #E9E8DF;
 }
+
+/* blog page styling */
+#blog-section{
+    background-color: #e9e8df;
+    height: 100vh;
+    padding-top: 10%;
+}
