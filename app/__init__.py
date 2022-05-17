@@ -34,7 +34,7 @@ def create_app(config_name):
     # Creating the app configurations
     app.config.from_object(config_options[config_name])
     
-    # app.config['SQLALCHEMY_DATABASE_URI']='postgresql://ahutdjtnbfddfq:cd782ccfb813ee005fb002b65c80cbfcf358ca887ece323e9971f2e92aa4eb51@ec2-44-196-223-128.compute-1.amazonaws.com:5432/d7m7331srjqb1m'
+    app.config['SQLALCHEMY_DATABASE_URI']='postgresql://ahutdjtnbfddfq:cd782ccfb813ee005fb002b65c80cbfcf358ca887ece323e9971f2e92aa4eb51@ec2-44-196-223-128.compute-1.amazonaws.com:5432/d7m7331srjqb1m'
     
 
 
