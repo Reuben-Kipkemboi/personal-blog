@@ -56,6 +56,7 @@ def make_comment(blog_id):
             form.content.data = ''
     return render_template('comment.html',blog= blog, user_comments =user_comments, form = form)
 
+
 #Deleting insulting or degrading comments.
 @main.route('/comment/<comment_id>', methods=['POST','GET'])
 @login_required
