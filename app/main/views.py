@@ -17,7 +17,6 @@ def index():
 @main.route('/newblog', methods=['GET', 'POST'])
 @login_required
 def new_blog():
-    all_subscribers = Subscriber.query.all()
     form = BlogForm()
     if form.validate_on_submit():
         blog_title = form.title.data
@@ -26,8 +25,6 @@ def new_blog():
         
         new_user_blog.save_blog()
     
-        # for subscriber in all_subscribers:
-        #     mail_message("New Alert, We have a new blog for you","email/newblog",subscriber.email,new_user_blog=new_user_blog)
         
         return redirect(url_for('main.index'))
         
@@ -101,12 +98,3 @@ def delete_user_blog(blog_id):
     db.session.commit()
     return redirect(url_for('main.index'))
 
-#Subscribers
-# @main.route('/subscribe',methods=['GET', 'POST'])
-# def user_subscription():
-#     user_email = request.form.get('subscriber')
-#     blog_subscriber = Subscriber(email =user_email)
-#     blog_subscriber.save_subscribers()
-#     mail_message("Successfully subscribed to BlogPosts", "email/welcome",blog_subscriber.email,blog_subscriber=blog_subscriber)
-    
-#     return redirect(url_for('main.index'))
