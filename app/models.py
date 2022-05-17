@@ -88,20 +88,20 @@ class Comment(db.Model):
     comment_content = db.Column(db.String(255))
     date_commented = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
     # username= db.Column(db.String(255))
-    # user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     blog_id = db.Column(db.Integer, db.ForeignKey('blogs.id'))
 
     
     def save_comment(self):
         db.session.add(self)
         db.session.commit()
-
+        
     def __repr__(self):
         return f'Comment {self.name}'
     
 #subscribers model
 class Subscriber(db.Model):
-    __table__ ='subscribers'
+    __tablename__ ='subscribers'
     
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), unique=True, index=True)
@@ -109,3 +109,6 @@ class Subscriber(db.Model):
     def save_subscribers(self):
         db.session.add(self)
         db.session.commit()
+        
+    def __repr__(self):
+        return f'Subscriber {self.email}'
