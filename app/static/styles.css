@@ -47,3 +47,14 @@
     height: 100vh;
     padding-top: 10%;
 }
+
+#subscribe{
+    background-color: #a69d8d;
+    display: block;
+    margin: 0 auto;
+
+}
+#lead{
+    border-bottom: 1px solid #16182D;
+    color: #16182D;
+}
