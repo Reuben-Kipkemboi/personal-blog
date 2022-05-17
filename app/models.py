@@ -31,6 +31,7 @@ class User(UserMixin, db.Model):
     description = db.Column(db.String(255))
     avatar = db.Column(db.String())
     blogs = db.relationship('Blog', backref='author', lazy = 'dynamic')
+    comments = db.relationship('Comment', backref='user', lazy = 'dynamic')
      # save user
     def save_user(self):
         db.session.add(self)
@@ -87,7 +88,6 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     comment_content = db.Column(db.String(255))
     date_commented = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
-    # username= db.Column(db.String(255))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     blog_id = db.Column(db.Integer, db.ForeignKey('blogs.id'))
 
