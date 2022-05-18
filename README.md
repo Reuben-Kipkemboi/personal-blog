@@ -116,7 +116,7 @@ chmod a+x start.sh
 ## License
 [MIT License](LICENSE)
 
-## Design Link
+## Design 
 * [Design](https://www.figma.com/file/r2H9WSgZZYkB7NsFxioBpT/blog?node-id=2%3A2)
 
 ## Live Site
