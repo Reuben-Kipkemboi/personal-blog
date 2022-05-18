@@ -1,19 +1,12 @@
 import urllib.request,json
 from .models import Quotes
-# import requests 
 
 # Getting api key
 api_key = None
-
-
 def configure_request(app):
     global BASE_URL
     BASE_URL =app.config['QUOTES_API_URL']
-
-
     BASE_URL = None
-
-    
 
 def get_quote():
     '''
